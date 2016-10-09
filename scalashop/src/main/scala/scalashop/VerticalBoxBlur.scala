@@ -62,6 +62,6 @@ object VerticalBoxBlur {
       }
     }
 
-    parBlurRec(src, dst, 0, math.ceil( src.width.toDouble/numTasks).toInt, radius)
+    parBlurRec(src, dst, 0, math.ceil(src.width.toDouble/numTasks).toInt, radius)
   }
 }

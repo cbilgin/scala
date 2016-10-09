@@ -27,11 +27,11 @@ object HorizontalBoxBlurRunner {
     val partime = standardConfig measure {
       HorizontalBoxBlur.parBlur(src, dst, numTasks, radius)
     }
+
     println(s"fork/join blur time: $partime ms")
     println(s"speedup: ${seqtime / partime}")
   }
 }
-
 
 /** A simple, trivially parallelizable computation. */
 object HorizontalBoxBlur {
@@ -63,6 +63,6 @@ object HorizontalBoxBlur {
       }
     }
 
-    parBlurRec(src, dst, 0, math.ceil( src.height.toDouble/numTasks).toInt, radius)
+    parBlurRec(src, dst, 0, math.ceil(src.height.toDouble/numTasks).toInt, radius)
   }
 }
