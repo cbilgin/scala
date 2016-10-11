@@ -10,11 +10,13 @@ object Huffman {
   /**
     * A huffman code is represented by a binary tree.
     *
-    * Every `Leaf` node of the tree represents one character of the alphabet that the tree can encode.
-    * The weight of a `Leaf` is the frequency of appearance of the character.
+    * Every `Leaf` node of the tree represents one character of the alphabet that
+    * the tree can encode. The weight of a `Leaf` is the frequency of appearance of
+    * the character.
     *
-    * The branches of the huffman tree, the `Fork` nodes, represent a set containing all the characters
-    * present in the leaves below it. The weight of a `Fork` node is the sum of the weights of these
+    * The branches of the huffman tree, the `Fork` nodes, represent a set containing
+    * all the characters present in the leaves below it. The weight of a `Fork` node
+    * is the sum of the weights of these
     * leaves.
     */
   abstract class CodeTree
@@ -38,8 +40,8 @@ object Huffman {
   def string2Chars(str: String): List[Char] = str.toList
 
   /**
-    * This function computes for each unique character in the list `chars` the number of
-    * times it occurs. For example, the invocation
+    * This function computes for each unique character in the list `chars` the
+    * number of times it occurs. For example, the invocation
     *
     * times(List('a', 'b', 'a'))
     * should return the following (the order of the resulting list is not important):
@@ -106,7 +108,8 @@ object Huffman {
     * the example invocation. Also define the return type of the `until` function.
     * - try to find sensible parameter names for `xxx`, `yyy` and `zzz`.
     */
-  def until(isSingle: List[CodeTree] => Boolean, combine: List[CodeTree] => List[CodeTree])(trees: List[CodeTree]): CodeTree =
+  def until(isSingle: List[CodeTree] => Boolean,
+            combine: List[CodeTree] => List[CodeTree])(trees: List[CodeTree]): CodeTree =
     if (singleton(trees)) trees.head  else until(isSingle, combine)(combine(trees))
 
   /**
@@ -122,8 +125,8 @@ object Huffman {
   type Bit = Int
 
   /**
-    * This function decodes the bit sequence `bits` using the code tree `tree` and returns
-    * the resulting list of characters.
+    * This function decodes the bit sequence `bits` using the code tree `tree`
+    * and returns the resulting list of characters.
     */
   def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
     def decodeChar(t: CodeTree, b: List[Bit]): List[Char] = t match {
@@ -145,7 +148,9 @@ object Huffman {
     * What does the secret message say? Can you decode it?
     * For the decoding use the frenchCode' Huffman tree defined above.
     **/
-  val secret: List[Bit] = List(0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1)
+  val secret: List[Bit] = List(0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0,
+    0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1,
+    1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1)
 
   /**
     * Write a function that returns the decoded secret
