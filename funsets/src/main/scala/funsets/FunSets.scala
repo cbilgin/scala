@@ -42,7 +42,7 @@ object FunSets {
   /**
     * Returns the subset of `s` for which `p` holds.
     */
-  def filter(s: Set, p: Int => Boolean): Set = x => p(x)
+  def filter(s: Set, p: Int => Boolean): Set = x => p(x) & contains(s, x)
 
   /**
     * The bounds for `forall` and `exists` are +/- 1000.
@@ -86,6 +86,4 @@ object FunSets {
   def printSet(s: Set) {
     println(toString(s))
   }
-
-
 }
