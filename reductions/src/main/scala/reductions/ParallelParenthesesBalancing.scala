@@ -1,6 +1,5 @@
 package reductions
 
-import scala.annotation._
 import org.scalameter._
 import common._
 
@@ -41,25 +40,31 @@ object ParallelParenthesesBalancing {
   /** Returns `true` iff the parentheses in the input `chars` are balanced.
    */
   def balance(chars: Array[Char]): Boolean = {
-    ???
+    var i = 0
+    var lP = 0
+    while(i < chars.length){
+      if(chars(i) == '(')
+        lP += 1
+      else if(chars(i) == ')')
+        lP -= 1
+
+      if(lP < 0)
+        return false
+
+      i += 1
+    }
+
+    return lP == 0
   }
 
   /** Returns `true` iff the parentheses in the input `chars` are balanced.
    */
   def parBalance(chars: Array[Char], threshold: Int): Boolean = {
 
-    def traverse(idx: Int, until: Int, arg1: Int, arg2: Int) /*: ???*/ = {
-      ???
-    }
+    def traverse(from: Int, until: Int, _???_: Int, _???_: Int): ???
 
-    def reduce(from: Int, until: Int) /*: ???*/ = {
-      ???
-    }
+    def reduce(from: Int, until: Int): ??? = ???
 
     reduce(0, chars.length) == ???
   }
-
-  // For those who want more:
-  // Prove that your reduction operator is associative!
-
 }
